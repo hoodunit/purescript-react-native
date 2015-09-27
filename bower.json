@@ -16,8 +16,11 @@
   ],
   "dependencies": {
     "purescript-console": "^0.1.0",
-    "purescript-react": "~0.4.1"
+    "purescript-react": "~0.4.1",
+    "purescript-functions": "~0.1.0"
   },
-  "authors": ["Nicholas Kariniemi <nicholas.kariniemi@gmail.com>"],
+  "authors": [
+    "Nicholas Kariniemi <nicholas.kariniemi@gmail.com>"
+  ],
   "license": "MIT"
 }

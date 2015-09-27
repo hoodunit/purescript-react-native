@@ -2,8 +2,17 @@
 
 // module ReactNative.Components
 
-exports.textClass = require('react-native').Text;
 exports.viewClass = require('react-native').View;
+exports.textClass = require('react-native').Text;
+exports.listViewClass = require('react-native').ListView;
+
+exports.listViewDataSource = function(items){
+  var ReactNative = require('react-native');
+  var ListView = ReactNative.ListView;
+  return new ListView.DataSource({
+    rowHasChanged: function(r1, r2){ return r1 !== r2; }
+  }).cloneWithRows(items);
+}
 
 function mkProps(props) {
     var result = {};
