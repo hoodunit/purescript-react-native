@@ -1,5 +1,9 @@
 {
-  "name": "ReactNativePureScript",
+  "name": "purescript-react-native",
+  "description": "Low-level PureScript wrapper for React Native",
+  "keywords": [
+    "purescript"
+  ],
   "version": "1.0.0",
   "moduleType": [
     "node"
@@ -13,5 +17,7 @@
   "dependencies": {
     "purescript-console": "^0.1.0",
     "purescript-react": "~0.4.1"
-  }
+  },
+  "authors": ["Nicholas Kariniemi <nicholas.kariniemi@gmail.com>"],
+  "license": "MIT"
 }
