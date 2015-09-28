@@ -10,7 +10,7 @@ foreign import createElement :: forall props. ReactClass props -> props -> Array
 foreign import viewClass :: forall props. ReactClass props
 foreign import textClass :: forall props. ReactClass props
 foreign import listViewClass :: forall props. ReactClass props
-foreign import listViewDataSource :: Array String -> ListViewDataSource
+foreign import listViewDataSource :: forall a. Array a -> ListViewDataSource
 
 view :: Array Props -> Array ReactElement -> ReactElement
 view = createElement viewClass
