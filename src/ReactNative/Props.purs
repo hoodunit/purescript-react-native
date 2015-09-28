@@ -6,7 +6,7 @@ import React (ReactElement())
 import React.DOM.Props (Props(), unsafeMkProps)
 import ReactNative.Components (ListViewDataSource())
 
-type RenderRowFn = String -> String -> String -> String -> ReactElement
+type RenderRowFn = forall highlightFn. String -> String -> String -> highlightFn -> ReactElement
 
 renderRow :: RenderRowFn -> Props
 renderRow fun = unsafeMkProps "renderRow" (mkFn4 fun)
