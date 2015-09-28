@@ -11,7 +11,7 @@ type RenderRowFn = forall rowData highlightFn. rowData -> String -> String -> hi
 type RenderSeparatorFn = String -> String -> Boolean -> ReactElement
 type RenderHeaderFn = forall eff. Eff eff ReactElement
 
-foreign import renderHeaderFn :: forall eff. ReactElement -> (Unit -> ReactElement)
+foreign import renderHeaderFn :: ReactElement -> (Unit -> ReactElement)
 
 renderRow :: forall rowData highlightFn. (rowData -> String -> String -> highlightFn -> ReactElement) -> Props
 renderRow = unsafeMkProps "renderRow" <<< mkFn4
