@@ -5,6 +5,8 @@
 exports.viewClass = require('react-native').View;
 exports.textClass = require('react-native').Text;
 exports.listViewClass = require('react-native').ListView;
+exports.touchableHighlightClass = require('react-native').TouchableHighlight;
+exports.touchableNativeFeedbackClass = require('react-native').TouchableNativeFeedback;
 
 exports.listViewDataSource = function(items){
   var ReactNative = require('react-native');
@@ -34,6 +36,14 @@ exports.createElement = function(clazz) {
     return function(props) {
         return function(children) {
             return React.createElement(clazz, props.length > 0 ? mkProps(props) : null, children);
+        }
+    }
+};
+
+exports.createElementOneChild = function(clazz) {
+    return function(props) {
+        return function(child) {
+            return React.createElement(clazz, props.length > 0 ? mkProps(props) : null, child);
         }
     }
 };
