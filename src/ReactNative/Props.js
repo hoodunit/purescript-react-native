@@ -2,8 +2,8 @@
 
 // module ReactNative.Props
 
-exports.renderHeaderFn = function(reactElement){
+exports.unitFn = function(data){
   return function(){
-    return reactElement;
+    return data;
   }
 }

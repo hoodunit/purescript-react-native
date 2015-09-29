@@ -12,7 +12,7 @@ type RenderSeparatorFn = String -> String -> Boolean -> ReactElement
 type RenderHeaderFn = forall eff. Eff eff ReactElement
 type OnPressFn = forall eff. Eff eff Unit
 
-foreign import renderHeaderFn :: ReactElement -> (Unit -> ReactElement)
+foreign import unitFn :: forall a. a -> (Unit -> a)
 
 renderRow :: forall rowData highlightFn. (rowData -> String -> String -> highlightFn -> ReactElement) -> Props
 renderRow = unsafeMkProps "renderRow" <<< mkFn4
@@ -21,7 +21,10 @@ renderSeparator :: RenderSeparatorFn -> Props
 renderSeparator fun = unsafeMkProps "renderSeparator" (mkFn3 fun)
 
 renderHeader :: ReactElement -> Props
-renderHeader elem = unsafeMkProps "renderHeader" (renderHeaderFn elem)
+renderHeader elem = unsafeMkProps "renderHeader" (unitFn elem)
+
+renderFooter :: ReactElement -> Props
+renderFooter elem = unsafeMkProps "renderFooter" (unitFn elem)
 
 dataSource :: ListViewDataSource -> Props
 dataSource = unsafeMkProps "dataSource" 
