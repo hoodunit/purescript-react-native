@@ -8,27 +8,32 @@ exports.listViewClass = require('react-native').ListView;
 exports.touchableHighlightClass = require('react-native').TouchableHighlight;
 exports.touchableNativeFeedbackClass = require('react-native').TouchableNativeFeedback;
 
-exports.listViewDataSource = function(items){
-  var ReactNative = require('react-native');
-  var ListView = ReactNative.ListView;
-  return new ListView.DataSource({
-    rowHasChanged: function(r1, r2){ return r1 !== r2; }
-  }).cloneWithRows(items);
+exports.listViewDataSource = function(dict){
+  return function(items){
+    var ReactNative = require('react-native');
+    var ListView = ReactNative.ListView;
+    return new ListView.DataSource({
+      rowHasChanged: function(r1, r2){ return !dict.eq(r1)(r2); }
+    }).cloneWithRows(items);
+  }
+}
+
+exports.cloneWithRows = function(dataSource){
+  return function(items){
+    return dataSource.cloneWithRows(items);
+  }
 }
 
 function mkProps(props) {
     var result = {};
-
     for (var i = 0, len = props.length; i < len; i++) {
         var prop = props[i];
-
         for (var key in prop) {
             if (prop.hasOwnProperty(key)) {
                 result[key] = prop[key];
             }
         }
     }
-
     return result;
 };
 

@@ -13,7 +13,8 @@ foreign import textClass :: forall props. ReactClass props
 foreign import listViewClass :: forall props. ReactClass props
 foreign import touchableHighlightClass :: forall props. ReactClass props
 foreign import touchableNativeFeedbackClass :: forall props. ReactClass props
-foreign import listViewDataSource :: forall a. Array a -> ListViewDataSource
+foreign import listViewDataSource :: forall a. (Eq a) => Array a -> ListViewDataSource
+foreign import cloneWithRows :: forall a. ListViewDataSource -> Array a -> ListViewDataSource
 
 view :: Array Props -> Array ReactElement -> ReactElement
 view = createElement viewClass
