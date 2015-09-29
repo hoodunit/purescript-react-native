@@ -28,3 +28,9 @@ dataSource = unsafeMkProps "dataSource"
 
 onPress :: forall eff props state result. (Event -> EventHandlerContext eff props state result) -> Props
 onPress f = unsafeMkProps "onPress" (handle f)
+
+onSubmitEditing :: forall eff props state result. (Event -> EventHandlerContext eff props state result) -> Props
+onSubmitEditing f = unsafeMkProps "onSubmitEditing" (handle f)
+
+onChangeText :: forall eff props state result. (String -> EventHandlerContext eff props state result) -> Props
+onChangeText f = unsafeMkProps "onChangeText" (handle f)
