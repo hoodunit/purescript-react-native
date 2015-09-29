@@ -7,6 +7,7 @@ exports.textClass = require('react-native').Text;
 exports.listViewClass = require('react-native').ListView;
 exports.touchableHighlightClass = require('react-native').TouchableHighlight;
 exports.touchableNativeFeedbackClass = require('react-native').TouchableNativeFeedback;
+exports.textInputClass = require('react-native').TextInput;
 
 exports.listViewDataSource = function(dict){
   return function(items){
