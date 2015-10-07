@@ -54,6 +54,6 @@ exports.createElementOneChild = function(clazz) {
     }
 };
 
-exports.text = function(text) {
+exports.textElem = function(text) {
     return text;
 };
