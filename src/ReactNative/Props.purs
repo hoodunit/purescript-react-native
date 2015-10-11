@@ -44,11 +44,9 @@ onSubmitEditing f = unsafeMkProps "onSubmitEditing" (handle f)
 onChangeText :: forall eff props state result. (String -> EventHandlerContext eff props state result) -> Props
 onChangeText f = unsafeMkProps "onChangeText" (handle f)
 
-
 foreign import data NativeFeedbackBackground :: *
 foreign import selectableBackground :: NativeFeedbackBackground
 foreign import selectableBackgroundBorderless :: NativeFeedbackBackground
 
 background :: NativeFeedbackBackground -> Props
 background = unsafeMkProps "background" 
-
