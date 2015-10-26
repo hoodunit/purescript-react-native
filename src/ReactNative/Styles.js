@@ -21,7 +21,7 @@ exports.getStyleId = function(styleSheet){
   }
 }
 
-exports.unsafeMkStyle = function(key) {
+exports.unsafeMkStyleProp = function(key) {
     return function(value) {
       return [key, value];
     };
