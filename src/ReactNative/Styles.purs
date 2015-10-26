@@ -95,23 +95,53 @@ borderBottomWidth = unsafeMkStyleProp "borderBottomWidth"
 borderLeftWidth :: Number -> StyleProp
 borderLeftWidth = unsafeMkStyleProp "borderLeftWidth"
 
-position :: String -> StyleProp
-position = unsafeMkStyleProp "position"
+data Position = Absolute | Relative
 
-flexDirection :: String -> StyleProp
-flexDirection = unsafeMkStyleProp "flexDirection"
+position :: Position -> StyleProp
+position Absolute = unsafeMkStyleProp "position" "absolute"
+position Relative = unsafeMkStyleProp "position" "relative"
 
-flexWrap :: String -> StyleProp
-flexWrap = unsafeMkStyleProp "flexWrap"
+data FlexDirection = Row | Column
 
-justifyContent :: String -> StyleProp
-justifyContent = unsafeMkStyleProp "justifyContent"
+flexDirection :: FlexDirection -> StyleProp
+flexDirection Row = unsafeMkStyleProp "flexDirection" "row"
+flexDirection Column = unsafeMkStyleProp "flexDirection" "column"
 
-alignItems :: String -> StyleProp
-alignItems = unsafeMkStyleProp "alignItems"
+data WrapProp = Wrap | NoWrap
 
-alignSelf :: String -> StyleProp
-alignSelf = unsafeMkStyleProp "alignSelf"
+flexWrap :: WrapProp -> StyleProp
+flexWrap Wrap = unsafeMkStyleProp "flexWrap" "wrap"
+flexWrap NoWrap = unsafeMkStyleProp "flexWrap" "nowrap"
+
+data JustifyContent = JustifyContentFlexStart 
+                    | JustifyContentFlexEnd 
+                    | JustifyContentCenter 
+                    | JustifyContentSpaceBetween 
+                    | JustifyContentSpaceAround
+
+justifyContent :: JustifyContent -> StyleProp
+justifyContent JustifyContentFlexStart = unsafeMkStyleProp "justifyContent" "flex-start"
+justifyContent JustifyContentFlexEnd = unsafeMkStyleProp "justifyContent" "flex-end"
+justifyContent JustifyContentCenter = unsafeMkStyleProp "justifyContent" "center"
+justifyContent JustifyContentSpaceBetween = unsafeMkStyleProp "justifyContent" "space-between"
+justifyContent JustifyContentSpaceAround = unsafeMkStyleProp "justifyContent" "space-around"
+
+data AlignItems = AlignItemsFlexStart | AlignItemsFlexEnd | AlignItemsCenter | AlignItemsStretch
+
+alignItems :: AlignItems -> StyleProp
+alignItems AlignItemsFlexStart = unsafeMkStyleProp "alignItems" "flex-start"
+alignItems AlignItemsFlexEnd = unsafeMkStyleProp "alignItems" "flex-end"
+alignItems AlignItemsCenter = unsafeMkStyleProp "alignItems" "center"
+alignItems AlignItemsStretch = unsafeMkStyleProp "alignItems" "stretch"
+
+data AlignSelf = AlignSelfAuto | AlignSelfFlexStart | AlignSelfFlexEnd | AlignSelfCenter | AlignSelfStretch
+
+alignSelf :: AlignSelf -> StyleProp
+alignSelf AlignSelfAuto = unsafeMkStyleProp "alignSelf" "auto"
+alignSelf AlignSelfFlexStart = unsafeMkStyleProp "alignSelf" "flex-start"
+alignSelf AlignSelfFlexEnd = unsafeMkStyleProp "alignSelf" "flex-end"
+alignSelf AlignSelfCenter = unsafeMkStyleProp "alignSelf" "center"
+alignSelf AlignSelfStretch = unsafeMkStyleProp "alignSelf" "stretch"
 
 flex :: Number -> StyleProp
 flex = unsafeMkStyleProp "flex"
@@ -128,11 +158,36 @@ fontFamily = unsafeMkStyleProp "fontFamily"
 fontSize :: Number -> StyleProp
 fontSize = unsafeMkStyleProp "fontSize"
 
-fontStyle :: String -> StyleProp
-fontStyle = unsafeMkStyleProp "fontStyle"
+data FontStyle = FontNormal | FontItalic
 
-fontWeight :: String -> StyleProp
-fontWeight = unsafeMkStyleProp "fontWeight"
+fontStyle :: FontStyle -> StyleProp
+fontStyle FontNormal = unsafeMkStyleProp "fontStyle" "normal"
+fontStyle FontItalic = unsafeMkStyleProp "fontStyle" "italic"
+
+data FontWeight = WeightNormal 
+                | WeightBold 
+                | Weight100 
+                | Weight200 
+                | Weight300 
+                | Weight400 
+                | Weight500 
+                | Weight600 
+                | Weight700 
+                | Weight800 
+                | Weight900
+
+fontWeight :: FontWeight -> StyleProp
+fontWeight WeightNormal = unsafeMkStyleProp "fontWeight" "normal"
+fontWeight WeightBold = unsafeMkStyleProp "fontWeight" "bold"
+fontWeight Weight100 = unsafeMkStyleProp "fontWeight" "100"
+fontWeight Weight200 = unsafeMkStyleProp "fontWeight" "200"
+fontWeight Weight300 = unsafeMkStyleProp "fontWeight" "300"
+fontWeight Weight400 = unsafeMkStyleProp "fontWeight" "400"
+fontWeight Weight500 = unsafeMkStyleProp "fontWeight" "500"
+fontWeight Weight600 = unsafeMkStyleProp "fontWeight" "600"
+fontWeight Weight700 = unsafeMkStyleProp "fontWeight" "700"
+fontWeight Weight800 = unsafeMkStyleProp "fontWeight" "800"
+fontWeight Weight900 = unsafeMkStyleProp "fontWeight" "900"
 
 letterSpacing :: Number -> StyleProp
 letterSpacing = unsafeMkStyleProp "letterSpacing"
@@ -140,20 +195,40 @@ letterSpacing = unsafeMkStyleProp "letterSpacing"
 lineHeight :: Number -> StyleProp
 lineHeight = unsafeMkStyleProp "lineHeight"
 
-textAlign :: String -> StyleProp
-textAlign = unsafeMkStyleProp "textAlign"
+data TextAlign = TextAlignAuto | TextAlignLeft | TextAlignRight | TextAlignCenter | TextAlignJustify
 
-textDecorationLine :: String -> StyleProp
-textDecorationLine = unsafeMkStyleProp "textDecorationLine"
+textAlign :: TextAlign -> StyleProp
+textAlign TextAlignAuto = unsafeMkStyleProp "textAlign" "auto"
+textAlign TextAlignLeft = unsafeMkStyleProp "textAlign" "left"
+textAlign TextAlignRight = unsafeMkStyleProp "textAlign" "right"
+textAlign TextAlignCenter = unsafeMkStyleProp "textAlign" "center"
+textAlign TextAlignJustify = unsafeMkStyleProp "textAlign" "justify"
 
-textDecorationStyle :: String -> StyleProp
-textDecorationStyle = unsafeMkStyleProp "textDecorationStyle"
+data TextDecorationLine = None | Underline | LineThrough | UnderlineLineThrough
+
+textDecorationLine :: TextDecorationLine -> StyleProp
+textDecorationLine None = unsafeMkStyleProp "textDecorationLine" "none"
+textDecorationLine Underline = unsafeMkStyleProp "textDecorationLine" "underline"
+textDecorationLine LineThrough = unsafeMkStyleProp "textDecorationLine" "line-through"
+textDecorationLine UnderlineLineThrough = unsafeMkStyleProp "textDecorationLine" "underline line-through"
+
+data TextDecorationStyle = TextSolid | TextDouble | TextDotted | TextDashed
+
+textDecorationStyle :: TextDecorationStyle -> StyleProp
+textDecorationStyle TextSolid = unsafeMkStyleProp "textDecorationStyle" "solid"
+textDecorationStyle TextDouble = unsafeMkStyleProp "textDecorationStyle" "double"
+textDecorationStyle TextDotted = unsafeMkStyleProp "textDecorationStyle" "dotted"
+textDecorationStyle TextDashed = unsafeMkStyleProp "textDecorationStyle" "dashed"
 
 textDecorationColor :: String -> StyleProp
 textDecorationColor = unsafeMkStyleProp "textDecorationColor"
 
-writingDirection :: String -> StyleProp
-writingDirection = unsafeMkStyleProp "writingDirection"
+data WritingDirection = WritingDirectionAuto | WritingDirectionLtr | WritingDirectionRtl
+
+writingDirection :: WritingDirection -> StyleProp
+writingDirection WritingDirectionAuto = unsafeMkStyleProp "writingDirection" "auto"
+writingDirection WritingDirectionLtr = unsafeMkStyleProp "writingDirection" "ltr"
+writingDirection WritingDirectionRtl = unsafeMkStyleProp "writingDirection" "rtl"
 
 
 -- TODO: Transform prop types
@@ -161,8 +236,11 @@ writingDirection = unsafeMkStyleProp "writingDirection"
 
 -- View style prop types
 
-backgroundVisibility :: String -> StyleProp
-backgroundVisibility = unsafeMkStyleProp "backgroundVisibility"
+data Visibility = Visible | Hidden
+
+backgroundVisibility :: Visibility -> StyleProp
+backgroundVisibility Visible = unsafeMkStyleProp "backgroundVisibility" "visible"
+backgroundVisibility Hidden = unsafeMkStyleProp "backgroundVisibility" "hidden"
 
 backgroundColor :: String -> StyleProp
 backgroundColor = unsafeMkStyleProp "backgroundColor"
@@ -197,14 +275,19 @@ borderBottomLeftRadius = unsafeMkStyleProp "borderBottomLeftRadius"
 borderBottomRightRadius :: Number -> StyleProp
 borderBottomRightRadius = unsafeMkStyleProp "borderBottomRightRadius"
 
-borderStyle :: String -> StyleProp
-borderStyle = unsafeMkStyleProp "borderStyle"
+data BorderStyle = BorderSolid | BorderDotted | BorderDashed
+
+borderStyle :: BorderStyle -> StyleProp
+borderStyle BorderSolid = unsafeMkStyleProp "borderStyle" "solid"
+borderStyle BorderDotted = unsafeMkStyleProp "borderStyle" "dotted"
+borderStyle BorderDashed = unsafeMkStyleProp "borderStyle" "dashed"
 
 opacity :: Number -> StyleProp
 opacity = unsafeMkStyleProp "opacity"
 
-overflow :: Number -> StyleProp
-overflow = unsafeMkStyleProp "overflow"
+overflow :: Visibility -> StyleProp
+overflow Visible = unsafeMkStyleProp "overflow" "visible"
+overflow Hidden = unsafeMkStyleProp "overflow" "hidden"
 
 shadowColor :: String -> StyleProp
 shadowColor = unsafeMkStyleProp "shadowColor"
