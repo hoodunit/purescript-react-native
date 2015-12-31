@@ -5,10 +5,12 @@ import React.DOM.Props (Props(), unsafeMkProps)
 
 foreign import data StyleSheet :: *
 foreign import data StyleProp :: *
+foreign import data StylesObject :: *
 type StyleId = Int
 data Style = Style String (Array StyleProp)
 
 foreign import createStyleSheet :: Array Style -> StyleSheet
+foreign import createStylesObject :: Array StyleProp -> StylesObject
 foreign import getStyleId :: StyleSheet -> String -> StyleId
 foreign import unsafeMkStyleProp :: forall val. String -> val -> StyleProp
 
@@ -17,6 +19,9 @@ style = unsafeMkProps "style"
 
 styles :: Array StyleId -> Props
 styles = unsafeMkProps "style"
+
+style' :: Array StyleProp -> Props
+style' styles = unsafeMkProps "style" (createStylesObject styles)
 
 -- Layout prop types
 

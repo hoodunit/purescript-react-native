@@ -13,6 +13,14 @@ exports.createStyleSheet = function(styles){
   return require('react-native').StyleSheet.create(stylesObj);
 }
 
+exports.createStylesObject = function(styles){
+  var stylesObj = {};
+  styles.forEach(function(s) { 
+    stylesObj[s[0]] = s[1];
+  });
+  return stylesObj;
+}
+
 exports.getStyleId = function(styleSheet){
   return function(key){
     return styleSheet[key];
