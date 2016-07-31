@@ -15,9 +15,9 @@
     "output"
   ],
   "dependencies": {
-    "purescript-console": "^0.1.0",
-    "purescript-react": "~0.5.0",
-    "purescript-functions": "~0.1.0"
+    "purescript-react": "^1.1.0",
+    "purescript-functions": "^1.0.0",
+    "purescript-console": "^1.0.0"
   },
   "authors": [
     "Nicholas Kariniemi <nicholas.kariniemi@gmail.com>"

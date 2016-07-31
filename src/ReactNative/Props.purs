@@ -2,7 +2,7 @@ module ReactNative.Props where
 
 import Prelude
 import Control.Monad.Eff (Eff())
-import Data.Function (mkFn0, mkFn3, mkFn4)
+import Data.Function.Uncurried (mkFn3, mkFn4)
 import React (ReactElement(), Event(), EventHandlerContext(), handle)
 import React.DOM.Props (Props(), unsafeMkProps)
 import ReactNative.Components (ListViewDataSource())
@@ -27,7 +27,7 @@ renderFooter :: ReactElement -> Props
 renderFooter elem = unsafeMkProps "renderFooter" (unitFn elem)
 
 dataSource :: ListViewDataSource -> Props
-dataSource = unsafeMkProps "dataSource" 
+dataSource = unsafeMkProps "dataSource"
 
 onPress :: forall eff props state result. (Event -> EventHandlerContext eff props state result) -> Props
 onPress f = unsafeMkProps "onPress" (handle f)
@@ -49,4 +49,4 @@ foreign import selectableBackground :: NativeFeedbackBackground
 foreign import selectableBackgroundBorderless :: NativeFeedbackBackground
 
 background :: NativeFeedbackBackground -> Props
-background = unsafeMkProps "background" 
+background = unsafeMkProps "background"
