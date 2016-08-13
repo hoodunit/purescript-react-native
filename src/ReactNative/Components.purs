@@ -2,12 +2,13 @@ module ReactNative.Components where
 
 import Prelude
 import React (ReactClass(), ReactElement())
-import React.DOM.Props (Props())
+import React.DOM.Props (Props(), unsafeMkProps)
 
 foreign import data ListViewDataSource :: *
 
 foreign import createElement :: forall props. ReactClass props -> props -> Array ReactElement -> ReactElement
 foreign import createElementOneChild :: forall props. ReactClass props -> props -> ReactElement -> ReactElement
+foreign import createElementNoChildren :: forall props. ReactClass props -> props -> ReactElement
 foreign import viewClass :: forall props. ReactClass props
 foreign import textElem :: String -> ReactElement
 foreign import textClass :: forall props. ReactClass props
@@ -36,5 +37,11 @@ touchableHighlight = createElementOneChild touchableHighlightClass
 touchableNativeFeedback :: Array Props -> ReactElement -> ReactElement
 touchableNativeFeedback = createElementOneChild touchableNativeFeedbackClass
 
+multiline :: Boolean -> Props
+multiline = unsafeMkProps "multiline"
+
 textInput :: Array Props -> ReactElement
-textInput props = createElement textInputClass props []
+textInput props = createElementNoChildren textInputClass (props <> [multiline false])
+
+textInput' :: Array Props -> ReactElement
+textInput' props = createElement textInputClass (props <> [multiline true]) []
