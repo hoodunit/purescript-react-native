@@ -47,6 +47,7 @@ onChangeText f = unsafeMkProps "onChangeText" (handle f)
 foreign import data NativeFeedbackBackground :: *
 foreign import selectableBackground :: NativeFeedbackBackground
 foreign import selectableBackgroundBorderless :: NativeFeedbackBackground
+foreign import ripple :: String -> Boolean -> NativeFeedbackBackground
 
 background :: NativeFeedbackBackground -> Props
 background = unsafeMkProps "background"
