@@ -54,6 +54,11 @@ exports.createElementOneChild = function(clazz) {
     }
 };
 
+exports.createElementNoChildren = function(clazz) {
+    return function(props) {
+        return React.createElement(clazz, props.length > 0 ? mkProps(props) : null);
+    }
+};
 exports.textElem = function(text) {
     return text;
 };
