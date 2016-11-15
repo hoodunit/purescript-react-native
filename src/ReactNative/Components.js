@@ -2,6 +2,8 @@
 
 // module ReactNative.Components
 
+var React = require('react');
+
 exports.viewClass = require('react-native').View;
 exports.textClass = require('react-native').Text;
 exports.listViewClass = require('react-native').ListView;
