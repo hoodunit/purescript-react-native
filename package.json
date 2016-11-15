@@ -1,0 +1,12 @@
+{
+  "private": true,
+  "dependencies": {
+    "react": "~15.3.1",
+    "react-native": "0.37.0"
+  },
+  "devDependencies": {
+    "pulp": "^9.0.1",
+    "purescript": "^0.10.1",
+    "purescript-psa": "^0.3.9"
+  }
+}
